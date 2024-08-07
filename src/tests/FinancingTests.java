@@ -68,6 +68,29 @@ public class FinancingTests {
 			f.setIncome(1900.0);
 		});
 	}
+	
+	@Test
+	public void setMonthsShouldSetDataWhenValidData() {
+		
+		// arrange
+		Financing f = new Financing(100000.0, 2000.0, 80);
+		
+		// action
+		f.setMonths(81);
+		
+		// assert
+		Assertions.assertEquals(81, f.getMonths());
+	}
+	
+	@Test
+	public void setMonthsShouldThrowIllegalArgumentExceptionWhenInvalidData() {
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			Financing f = new Financing(100000.0, 2000.0, 80);
+			f.setMonths(79);
+		});
+	}
+
 
 	
 }
